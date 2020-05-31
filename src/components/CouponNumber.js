@@ -7,7 +7,7 @@ const Cell = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 15px;
-  background-color: #f1f1f1;
+  background-color: ${(props) => (props.isSelected ? 'yellow' : '#f1f1f1')};
   font-size: 1.25rem;
   height: 100%;
   cursor: pointer;
@@ -18,12 +18,18 @@ const Cell = styled.div`
   }
 `;
 
-function CouponNumber(props) {
-  return <Cell>{props.number}</Cell>;
+function CouponNumber({ onCouponNumberClick, isSelected, number }) {
+  return (
+    <Cell onClick={() => onCouponNumberClick(number)} isSelected={isSelected}>
+      {number}
+    </Cell>
+  );
 }
 
 CouponNumber.propTypes = {
   number: PropTypes.number,
+  onCouponNumberClick: PropTypes.func,
+  isSelected: PropTypes.bool,
 };
 
 export default CouponNumber;
