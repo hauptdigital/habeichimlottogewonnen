@@ -2,6 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import CouponNumber from './CouponNumber';
 
+const Title = styled.input``;
+
 const CouponNumberWrapper = styled.div`
   display: grid;
   grid-gap: 5px;
@@ -54,16 +56,19 @@ function LotteryTicket() {
   }
 
   return (
-    <CouponNumberWrapper>
-      {couponNumberFields.map((couponNumber) => (
-        <CouponNumber
-          key={couponNumber}
-          number={couponNumber}
-          isSelected={isSelected(couponNumber)}
-          onCouponNumberClick={handleCouponNumberClick}
-        />
-      ))}
-    </CouponNumberWrapper>
+    <>
+      <Title placeholder="Titel" />
+      <CouponNumberWrapper>
+        {couponNumberFields.map((couponNumber) => (
+          <CouponNumber
+            key={couponNumber}
+            number={couponNumber}
+            isSelected={isSelected(couponNumber)}
+            onCouponNumberClick={handleCouponNumberClick}
+          />
+        ))}
+      </CouponNumberWrapper>
+    </>
   );
 }
 
